@@ -7,7 +7,7 @@ import unittest
 class ThsTraderTestCase(unittest.TestCase):
 
     def setUp(self):
-        ip = '192.168.3.235'
+        ip = '127.0.0.1'
         mark = 3721
         self.trader = ThsTrader(ip, mark)
 
