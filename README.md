@@ -17,26 +17,7 @@
 * 本项目是基于Rest标准接口的Python3.7实现
 
 ## REST接口
-查询持仓  
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/get_position -d "{}"
-
-查询资金账户
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/get_balance -d "{}"
-
-查询今日成交
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/get_today_trades -d "{}"
-
-查询今日委托 
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/get_today_entrusts -d "{}"
-
-买入贵州茅台100股,价格1700.0元
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/buy -d '["600519", 1700.0, 100]'
-
-卖出贵州茅台100股,价格1800.0元
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/sell -d '["600519",1800.0,100]'
-
-撤所有买单(`buy`), 撤所有卖单(`sell`), 撤所有(`all`)
-> curl -H "Content-Type: application/json" -X POST http://localhost:3721/api/cancel_entrust -d '[buy|sell|all]'
+其他语言需要接入，请参考Wiki中[Rest接口](https://github.com/LeekQuant/leekquant/wiki/Rest%E6%8E%A5%E5%8F%A3)
 
 ## 运行项目
 ### **创建虚拟环境**
