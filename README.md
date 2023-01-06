@@ -30,8 +30,8 @@
 `test.py`里面有各种操作的实现
 
 ## 韭菜下单操作说明
-具体操作方法参考wiki: [韭菜下单操作说明](https://github.com/LeekQuant/leekquant/wiki/%E9%9F%AD%E8%8F%9C%E4%B8%8B%E5%8D%95%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E)
-![运行界面](https://github.com/LeekQuant/leekquant/blob/main/assets/images/guide1.png?raw=true)
+具体操作方法参考wiki: [韭菜下单操作说明](https://github.com/LeekQuant/leekquant/wiki/%E9%9F%AD%E8%8F%9C%E4%B8%8B%E5%8D%95%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E)<br>
+![运行界面](https://github.com/LeekQuant/leekquant/blob/main/assets/images/guide1.png?raw=true)<br>
 如无法满足您的需求，需要支持多用户以及其他高级功能等，可以联系作者定制
 
 ### 实例化Trader
