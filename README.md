@@ -53,25 +53,19 @@ df = trader.get_position(to_dataframe=True)
 ```python
 d = trader.get_balance()
 ```
-* 返回`dict`格式的结果
+* 返回`dict`
 
 ### 查询今日成交
 ```python
 df = trader.get_today_trades(to_dataframe=True)
-if not df.empty:
-    log.debug('\n{}', tabulate(df, headers='keys', tablefmt='psql'))
-else:
-    log.debug('无今日成交')
 ```
+* 指定`to_dataframe=True`则返回`pd.DataFrame`
 
 ### 查询今日委托
 ```python
 df = trader.get_today_entrusts(to_dataframe=True)
-if not df.empty:
-    log.debug('\n{}', tabulate(df, headers='keys', tablefmt='psql'))
-else:
-    log.debug('无今日委托')
 ```
+* 指定`to_dataframe=True`则返回`pd.DataFrame`
 
 ### 买入
 ```python
