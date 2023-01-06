@@ -27,7 +27,8 @@
 ### 安装依赖
 > pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### 用法参考测试用例
-`test.py`里面有各种操作的实现
+- 交易相关参考: `usage.ipynb`
+- 问财相关参考: `usage.ipynb`
 
 ## 韭菜下单操作说明
 具体操作方法参考wiki: [韭菜下单操作说明](https://github.com/LeekQuant/leekquant/wiki/%E9%9F%AD%E8%8F%9C%E4%B8%8B%E5%8D%95%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E)<br>
@@ -95,8 +96,20 @@ res = trader.cancel('sell')
 # 撤所有
 res = trader.cancel('all')
 ```
-
 * 返回值`res`: 返回具体的撤单结果 (依赖下单程序的弹窗)
+
+## 问财
+`WenCai.query()`支持3个参数`question:str`, `columns:list`, `limit:int`
+- 参数`question`: 字符串, 问财的问题语句,使用英分号;分割, 例如:非st;主板;非退市;行业;今日竞价涨幅小于3%;
+- 参数`columns`: 数组, 显示的额外列，默认只显示股票简称和股票代码, 具体列名参考问财网站, 列名是包含关系
+- 参数`limit`: 整数, 控制返回的条数，默认100条，最大100条
+
+### 示例
+```python
+from leekquant.ths_wencai import WenCai
+WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;dde连3日飘红;', columns=['dde','涨幅'], limit=5)
+```
+详细用法参考`usage.ipynb`
 
 ## 支持券商
 * 理论上只要券商支持同花顺下单都可以支持

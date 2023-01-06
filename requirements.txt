@@ -2,3 +2,4 @@ pandas
 requests
 tabulate
 loguru
+cachetools
