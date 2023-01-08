@@ -125,7 +125,7 @@ def tick_handler(tick):
     print(tick)
 
 # 注册回调
-q.reg_handler(tick_handler)
+q.reg_tick_handler(tick_handler)
 
 # 订阅你感兴趣的标的, 有任何tick数据，都会推送到回调函数里
 # 最多订阅5只，订阅多了不会报错，也不会推送任何数据

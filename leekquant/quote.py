@@ -49,7 +49,7 @@ class Quote:
             # log.debug('TICK:', tick)
             self.handler(tick)
 
-    def reg_handler(self, handler):
+    def reg_tick_handler(self, handler):
         self.handler = handler
 
     def __connect(self):
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     # 定义并注册一个tick回调
     def tick_handler(tick):
         print(tick)
-    q.reg_handler(tick_handler)
+    q.reg_tick_handler(tick_handler)
 
     # 订阅具体的代码，最多5个标的，注意格式
     codes = '603690.SH,002371.SZ,300812.SZ,300604.SZ,003043.SZ'
