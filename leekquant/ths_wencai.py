@@ -43,7 +43,7 @@ class WenCai:
 
     @cached(cache=TTLCache(maxsize=1, ttl=600))
     def get_ticket(self):
-        r = requests.get('http://47.242.67.95:8888/wencai-ticket')
+        r = requests.get('http://47.242.67.95:8000/wencai-ticket')
         if r.status_code != 200:
             raise Exception('failed to get wencai ticket')
         return r.json()['data']

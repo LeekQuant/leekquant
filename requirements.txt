@@ -3,3 +3,4 @@ requests
 tabulate
 loguru
 cachetools
+python-socketio[client]==5.7.2

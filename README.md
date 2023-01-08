@@ -10,11 +10,10 @@
 * 受益于此项目[thsauto](https://github.com/match5/thsauto)启发，实现一个类似的`REST`接口，方便各种语言接入
 
 ## 项目功能
-* 进行自动的程序化股票交易
-* 支持同花顺最新版通用下单程序(同花顺官网下载最新版里面带的xiadan.exe)
-* 支持通过`webserver`远程操作客户端
-* 支持标准Rest接口调用，方便其他语言适配
-* 本项目是基于Rest标准接口的Python3.7实现
+* `选股` => `行情` => `下单`, 全流程闭环支持
+* 选股基于`问财`, 用法参考 `usage_wencai.ipynb`
+* 基于level1的实时行情推送，用法参考 `usage_quote.ipynb`
+* 基于[韭菜下单](https://github.com/LeekQuant/leekquant/wiki/%E9%9F%AD%E8%8F%9C%E4%B8%8B%E5%8D%95%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E)的自动下单软件，用法参考 `usage_trader.ipynb`
 
 ## REST接口
 其他语言需要接入，请参考Wiki中[Rest接口](https://github.com/LeekQuant/leekquant/wiki/Rest%E6%8E%A5%E5%8F%A3)
@@ -27,8 +26,9 @@
 ### 安装依赖
 > pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### 用法参考测试用例
-- 交易相关参考: `usage.ipynb`
-- 问财相关参考: `usage.ipynb`
+- 交易相关参考: `usage_trader.ipynb`
+- 问财相关参考: `usage_wencai.ipynb`
+- 报价相关参考: `usage_quote.ipynb`
 
 ## 韭菜下单操作说明
 具体操作方法参考wiki: [韭菜下单操作说明](https://github.com/LeekQuant/leekquant/wiki/%E9%9F%AD%E8%8F%9C%E4%B8%8B%E5%8D%95%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E)<br>
@@ -109,7 +109,28 @@ res = trader.cancel('all')
 from leekquant.ths_wencai import WenCai
 WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;dde连3日飘红;', columns=['dde','涨幅'], limit=5)
 ```
-详细用法参考`usage.ipynb`
+详细用法参考`usage_wencai.ipynb`
+
+## 报价
+支持level1实盘报价, 具体用法参考 `usage_quote.ipynb` 或者直接运行 `leekquant`目录下的`quote.py`文件
+
+```python
+from leekquant.quote import Quote
+
+# 初始化
+q = Quote()
+
+# 定义一个回调, 所有收到的tick都在这里
+def tick_handler(tick):
+    print(tick)
+
+# 注册回调
+q.reg_handler(tick_handler)
+
+# 订阅你感兴趣的标的, 有任何tick数据，都会推送到回调函数里
+# 最多订阅5只，订阅多了不会报错，也不会推送任何数据
+q.sub_tick(codes=['603690.SH','002371.SZ','300812.SZ','300604.SZ','003043.SZ'])
+```
 
 ## 支持券商
 * 理论上只要券商支持同花顺下单都可以支持
