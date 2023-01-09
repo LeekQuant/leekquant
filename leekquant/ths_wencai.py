@@ -63,3 +63,7 @@ class WenCai:
         columns.insert(0, '股票简称')
         columns.insert(0, '股票代码')
         return columns
+
+if __name__ == '__main__':
+    df = WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;dde连3日飘红;', columns=['dde','涨幅'], limit=5)
+    print(df)
