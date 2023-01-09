@@ -112,6 +112,8 @@ WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;
 详细用法参考`usage_wencai.ipynb`
 
 ## 报价
+
+### level1报价订阅
 支持level1实盘报价, 具体用法参考 `usage_quote.ipynb` 或者直接运行 `leekquant`目录下的`quote.py`文件
 
 ```python
@@ -128,8 +130,17 @@ def tick_handler(tick):
 q.reg_tick_handler(tick_handler)
 
 # 订阅你感兴趣的标的, 有任何tick数据，都会推送到回调函数里
-# 最多订阅5只，订阅多了不会报错，也不会推送任何数据
+# 最多订阅20只，订阅多了不会报错，也不会推送任何数据
 q.sub_tick(codes=['603690.SH','002371.SZ','300812.SZ','300604.SZ','003043.SZ'])
+```
+
+### 全市场概况订阅
+全市场订阅返回的数据包括：大盘(沪深创业板), 上涨下跌概况，张跌停概况，北向资金概况
+```python
+def overview_handler(data):
+    print('收到市场概况:', data)
+q.reg_overview_handler(overview_handler)
+q.sub_overview()
 ```
 
 ## 支持券商
