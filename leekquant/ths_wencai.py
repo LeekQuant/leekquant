@@ -65,9 +65,9 @@ class WenCai:
         return columns
 
 if __name__ == '__main__':
-    df = WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;dde连3日飘红;', columns=['dde','涨幅'], limit=5)
-    print(df)
+    # df = WenCai.query(question='非st;主板;非退市;行业;今日竞价涨幅小于3%;dde连3日飘红;', columns=['dde','涨幅'], limit=5)
+    # print(df)
 
     print("================================================")
-    df = WenCai.query(question='板块资金流入; dde>0;', columns=['dde大单净额','涨跌幅'], limit=5)
+    df = WenCai.query(question='板块资金流入; dde>0;', columns=['大单净额','涨跌幅'], limit=5)
     print(df)
